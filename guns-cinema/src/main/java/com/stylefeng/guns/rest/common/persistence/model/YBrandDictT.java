@@ -9,14 +9,14 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 演员表
+ * 品牌信息表
  * </p>
  *
  * @author FanFanStudio
- * @since 2019-01-20
+ * @since 2019-02-15
  */
-@TableName("f_actor_t")
-public class FActorT extends Model<FActorT> {
+@TableName("y_brand_dict_t")
+public class YBrandDictT extends Model<YBrandDictT> {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,15 +26,10 @@ public class FActorT extends Model<FActorT> {
     @TableId(value = "UUID", type = IdType.AUTO)
     private Integer uuid;
     /**
-     * 演员名称
+     * 显示名称
      */
-    @TableField("actor_name")
-    private String actorName;
-    /**
-     * 演员图片位置
-     */
-    @TableField("actor_img")
-    private String actorImg;
+    @TableField("show_name")
+    private String showName;
 
 
     public Integer getUuid() {
@@ -45,20 +40,12 @@ public class FActorT extends Model<FActorT> {
         this.uuid = uuid;
     }
 
-    public String getActorName() {
-        return actorName;
+    public String getShowName() {
+        return showName;
     }
 
-    public void setActorName(String actorName) {
-        this.actorName = actorName;
-    }
-
-    public String getActorImg() {
-        return actorImg;
-    }
-
-    public void setActorImg(String actorImg) {
-        this.actorImg = actorImg;
+    public void setShowName(String showName) {
+        this.showName = showName;
     }
 
     @Override
@@ -68,10 +55,9 @@ public class FActorT extends Model<FActorT> {
 
     @Override
     public String toString() {
-        return "FActorT{" +
+        return "YBrandDictT{" +
         "uuid=" + uuid +
-        ", actorName=" + actorName +
-        ", actorImg=" + actorImg +
+        ", showName=" + showName +
         "}";
     }
 }

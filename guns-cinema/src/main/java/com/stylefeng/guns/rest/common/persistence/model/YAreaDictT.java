@@ -9,14 +9,14 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 区域信息表
+ * 地域信息表
  * </p>
  *
  * @author FanFanStudio
- * @since 2019-01-20
+ * @since 2019-02-15
  */
-@TableName("f_source_dict_t")
-public class FSourceDictT extends Model<FSourceDictT> {
+@TableName("y_area_dict_t")
+public class YAreaDictT extends Model<YAreaDictT> {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class FSourceDictT extends Model<FSourceDictT> {
 
     @Override
     public String toString() {
-        return "FSourceDictT{" +
+        return "YAreaDictT{" +
         "uuid=" + uuid +
         ", showName=" + showName +
         "}";
