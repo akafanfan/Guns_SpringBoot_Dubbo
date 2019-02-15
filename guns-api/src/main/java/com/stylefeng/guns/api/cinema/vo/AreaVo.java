@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Data
 public class AreaVo implements Serializable {
     //获取行政区域
-    private Integer areaId;
+    private String areaId;
     private String  areaName;
     private Boolean isActive;
 }
