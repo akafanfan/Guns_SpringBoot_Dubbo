@@ -80,7 +80,7 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
 
     //2.根据条件获取品牌列表[除了就99以外，其他的数字为isActive]
     @Override
-    public List<BrandVo> getBrand(int brandId) {
+    public List<BrandVo> getBrands(int brandId) {
         //标志位
         boolean flag = false;
         List<BrandVo> brands = new ArrayList<>();
@@ -115,7 +115,7 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
 
     //3、获取行政区域列表
     @Override
-    public List<AreaVo> getArea(int areaId) {
+    public List<AreaVo> getAreas(int areaId) {
         //标志位
         boolean flag = false;
         List<AreaVo> areas = new ArrayList<>();
@@ -147,7 +147,7 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
     }
     //4、获取影厅类型列表
     @Override
-    public List<HallTypeVo> HallType(int halltypeId) {
+    public List<HallTypeVo> getHallType(int halltypeId) {
         //标志位
         boolean flag = false;
         List<HallTypeVo> hallTypes = new ArrayList<>();
@@ -197,22 +197,24 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
 
     //6、获取所有电影的信息和对应的放映场次信息，根据影院编号
     @Override
-    public FilmInfoVo getFilmInfoByCinemaId(int cinemaId) {
-
-        return null;
+    public List<FilmInfoVo> getFilmInfoByCinemaId(int cinemaId) {
+        //mybatis 一对多实体插入
+        List<FilmInfoVo> filmInfos = yFieldTMapper.getFilmInfos(cinemaId);
+        return filmInfos;
     }
 
     //7、根据放映场次ID获取放映信息
     @Override
-    public FilmFields getFilmFields(int fieldId) {
-
-        return null;
+    public HallInfoVo getFilmFields(int fieldId) {
+        HallInfoVo hallInfo = yFieldTMapper.getHallInfo(fieldId);
+        //
+        return hallInfo;
     }
 
     //8、根据放映场次查询播放的电影编号，然后根据电影编号获取对应的电影信息
     @Override
     public FilmInfoVo getFilmInfoByFieldId(int fieldId) {
-
-        return null;
+        FilmInfoVo filmInfoById = yFieldTMapper.getFilmInfoById(fieldId);
+        return filmInfoById;
     }
 }
