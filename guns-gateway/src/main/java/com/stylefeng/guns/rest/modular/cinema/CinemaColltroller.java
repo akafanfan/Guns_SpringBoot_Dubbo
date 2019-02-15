@@ -43,73 +43,73 @@ public class CinemaColltroller {
         }
 
     }
-
-
-    //2、获取影院列表查询条件
-    @RequestMapping(value = "getCondition", method = RequestMethod.GET)
-    public ResponseVo getCondition(CinemaQueryVo cinemaQueryVo){
-        //status(ResponseVo success(M m)中包含) + 获取三个集合 封装成一个对象 返回
-        //brandList areaList halltypeList
-        try {
-            List<BrandVo> brands = cinemaServiceAPI.getBrands(cinemaQueryVo.getBrandId());
-            List<AreaVo> areas = cinemaServiceAPI.getAreas(cinemaQueryVo.getBrandId());
-            List<HallTypeVo> hallTypes = cinemaServiceAPI.getHallType(cinemaQueryVo.getBrandId());
-            ConditionResponseVo conditionResponseVo = new ConditionResponseVo();
-            conditionResponseVo.setBrandList(brands);
-            conditionResponseVo.setAreaList(areas);
-            conditionResponseVo.setHalltypeList(hallTypes);
-            return ResponseVo.success(conditionResponseVo);
-        } catch (Exception e) {
-            log.error("获取影院条件列表失败", e);
-            return ResponseVo.serviceFail("获取影院条件列表失败");
-        }
-
-
-    }
-
-    //3、获取播放场次接口
-    @RequestMapping(value = "getFields" , method = RequestMethod.GET)
-    public ResponseVo getFields(Integer cinemaId){
-        try {
-            CinemaInfoVo cinemaInfoById = cinemaServiceAPI.getCinemaInfoById(cinemaId);
-
-            List<FilmInfoVo> filmInfoByCinemaId = cinemaServiceAPI.getFilmInfoByCinemaId(cinemaId);
-
-            CinemaFieldsResponseVo cinemaFieldsResponseVo = new CinemaFieldsResponseVo();
-            cinemaFieldsResponseVo.setCinemaInfo(cinemaInfoById);
-            cinemaFieldsResponseVo.setFilmList(filmInfoByCinemaId);
-
-            return ResponseVo.success(IMG_PRE, cinemaFieldsResponseVo);
-
-        } catch (Exception e) {
-            log.error("获取播放场次失败", e);
-            return ResponseVo.serviceFail("获取播放场次失败");
-        }
-    }
-
-    //4、获取场次详细信息接口
-    @RequestMapping(value = "getFieldInfo" , method = RequestMethod.POST)
-    public ResponseVo getFieldInfo(Integer cinemaId ,Integer fieldId){
-        try {
-            //filmInfo + cinemaInfo +hallInf
-            CinemaInfoVo cinemaInfoById = cinemaServiceAPI.getCinemaInfoById(cinemaId);
-
-            FilmInfoVo filmInfoByFieldId = cinemaServiceAPI.getFilmInfoByFieldId(fieldId);
-
-            HallInfoVo filmFields = cinemaServiceAPI.getFilmFields(fieldId);
-            //测试 销售的假数据 后面对接 订单接口
-            filmFields.setSoldSeats("1,2,3");
-
-
-            CinemaFieldResponseVo cinemaFieldResponseVo = new CinemaFieldResponseVo();
-            cinemaFieldResponseVo.setFilmInfo(filmInfoByFieldId);
-            cinemaFieldResponseVo.setCinemaInfo(cinemaInfoById);
-            cinemaFieldResponseVo.setHallInfo(filmFields);
-
-            return ResponseVo.success(IMG_PRE, cinemaFieldResponseVo);
-        } catch (Exception e) {
-            log.error("获取场次详细信息", e);
-            return ResponseVo.serviceFail("获取场次详细信息");
-        }
-    }
+//
+//
+//    //2、获取影院列表查询条件
+//    @RequestMapping(value = "getCondition", method = RequestMethod.GET)
+//    public ResponseVo getCondition(CinemaQueryVo cinemaQueryVo){
+//        //status(ResponseVo success(M m)中包含) + 获取三个集合 封装成一个对象 返回
+//        //brandList areaList halltypeList
+//        try {
+//            List<BrandVo> brands = cinemaServiceAPI.getBrands(cinemaQueryVo.getBrandId());
+//            List<AreaVo> areas = cinemaServiceAPI.getAreas(cinemaQueryVo.getBrandId());
+//            List<HallTypeVo> hallTypes = cinemaServiceAPI.getHallType(cinemaQueryVo.getBrandId());
+//            ConditionResponseVo conditionResponseVo = new ConditionResponseVo();
+//            conditionResponseVo.setBrandList(brands);
+//            conditionResponseVo.setAreaList(areas);
+//            conditionResponseVo.setHalltypeList(hallTypes);
+//            return ResponseVo.success(conditionResponseVo);
+//        } catch (Exception e) {
+//            log.error("获取影院条件列表失败", e);
+//            return ResponseVo.serviceFail("获取影院条件列表失败");
+//        }
+//
+//
+//    }
+//
+//    //3、获取播放场次接口
+//    @RequestMapping(value = "getFields" , method = RequestMethod.GET)
+//    public ResponseVo getFields(Integer cinemaId){
+//        try {
+//            CinemaInfoVo cinemaInfoById = cinemaServiceAPI.getCinemaInfoById(cinemaId);
+//
+//            List<FilmInfoVo> filmInfoByCinemaId = cinemaServiceAPI.getFilmInfoByCinemaId(cinemaId);
+//
+//            CinemaFieldsResponseVo cinemaFieldsResponseVo = new CinemaFieldsResponseVo();
+//            cinemaFieldsResponseVo.setCinemaInfo(cinemaInfoById);
+//            cinemaFieldsResponseVo.setFilmList(filmInfoByCinemaId);
+//
+//            return ResponseVo.success(IMG_PRE, cinemaFieldsResponseVo);
+//
+//        } catch (Exception e) {
+//            log.error("获取播放场次失败", e);
+//            return ResponseVo.serviceFail("获取播放场次失败");
+//        }
+//    }
+//
+//    //4、获取场次详细信息接口
+//    @RequestMapping(value = "getFieldInfo" , method = RequestMethod.POST)
+//    public ResponseVo getFieldInfo(Integer cinemaId ,Integer fieldId){
+//        try {
+//            //filmInfo + cinemaInfo +hallInf
+//            CinemaInfoVo cinemaInfoById = cinemaServiceAPI.getCinemaInfoById(cinemaId);
+//
+//            FilmInfoVo filmInfoByFieldId = cinemaServiceAPI.getFilmInfoByFieldId(fieldId);
+//
+//            HallInfoVo filmFields = cinemaServiceAPI.getFilmFields(fieldId);
+//            //测试 销售的假数据 后面对接 订单接口
+//            filmFields.setSoldSeats("1,2,3");
+//
+//
+//            CinemaFieldResponseVo cinemaFieldResponseVo = new CinemaFieldResponseVo();
+//            cinemaFieldResponseVo.setFilmInfo(filmInfoByFieldId);
+//            cinemaFieldResponseVo.setCinemaInfo(cinemaInfoById);
+//            cinemaFieldResponseVo.setHallInfo(filmFields);
+//
+//            return ResponseVo.success(IMG_PRE, cinemaFieldResponseVo);
+//        } catch (Exception e) {
+//            log.error("获取场次详细信息", e);
+//            return ResponseVo.serviceFail("获取场次详细信息");
+//        }
+//    }
 }

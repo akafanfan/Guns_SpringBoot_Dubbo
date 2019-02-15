@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 @Data
-public class FilmFields implements Serializable {
+public class FilmFieldVo implements Serializable {
     private String fieldId;
     private String beginTime;
     private String endTime;
