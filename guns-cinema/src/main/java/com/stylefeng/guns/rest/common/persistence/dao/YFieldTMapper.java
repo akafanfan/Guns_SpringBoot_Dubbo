@@ -19,7 +19,7 @@ import java.util.List;
 public interface YFieldTMapper extends BaseMapper<YFieldT> {
     List<FilmInfoVo> getFilmInfos(@Param("cinemaId") int cinemaId);
 
-    HallInfoVo getHallInfo(@Param("fieldId") int fileId);
+    HallInfoVo getHallInfo(@Param("fieldId") int fieldId);
 
-    FilmInfoVo getFilmInfoById(@Param("fieldId") int fileId);
+    FilmInfoVo getFilmInfoById(@Param("fieldId") int fieldId);
 }

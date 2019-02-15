@@ -97,6 +97,9 @@ public class CinemaColltroller {
             FilmInfoVo filmInfoByFieldId = cinemaServiceAPI.getFilmInfoByFieldId(fieldId);
 
             HallInfoVo filmFields = cinemaServiceAPI.getFilmFields(fieldId);
+            //测试 销售的假数据 后面对接 订单接口
+            filmFields.setSoldSeats("1,2,3");
+
 
             CinemaFieldResponseVo cinemaFieldResponseVo = new CinemaFieldResponseVo();
             cinemaFieldResponseVo.setFilmInfo(filmInfoByFieldId);

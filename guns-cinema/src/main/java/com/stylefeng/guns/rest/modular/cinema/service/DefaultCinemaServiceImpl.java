@@ -17,11 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Service(interfaceClass = CinemaServiceAPI.class)
+@Service(interfaceClass = CinemaServiceAPI.class )
 public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
-
-    @Autowired
-    private YFieldTMapper yFieldTMapper;
     @Autowired
     private YCinemaTMapper yCinemaTMapper;
     @Autowired
@@ -32,6 +29,8 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
     private YHallDictTMapper yHallDictTMapper;
     @Autowired
     private YHallFilmInfoTMapper yHallFilmInfoTMapper;
+    @Autowired
+    private YFieldTMapper yFieldTMapper;
 
 
     @Override
